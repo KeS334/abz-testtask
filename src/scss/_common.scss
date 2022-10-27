@@ -1,0 +1,55 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1{
+  font-family: 'Nunito', sans-serif;
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: 400;
+}
+body{
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  background-color: $color-background;
+}
+.container{
+  max-width: 1170px;
+  margin: 0 auto;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+.app{
+  &__poster, &__cards-block {
+    margin-bottom: 140px;
+  }
+  &__new-user {
+    margin-bottom: 100px;
+  }
+}
+.button{
+  display: block;
+  width: 100px;
+  height: 34px;
+  border-radius: 80px;
+  background-color: $color-primary;
+  font-size: inherit;
+  line-height: 34px;
+  text-align: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  &:hover{
+    background-color: $color-yellow-light;
+  }
+  &:disabled{
+    background-color: #B4B4B4;
+    color: $color-white;
+  }
+}
+

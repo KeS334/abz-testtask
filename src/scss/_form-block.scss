@@ -1,0 +1,126 @@
+.form-block{
+  &__title{
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  &__input-container {
+    position: relative;
+    margin-bottom: 50px;
+
+    &:nth-of-type(3) {
+      margin-bottom: 43px;
+    }
+
+    label {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      color: $color-gray;
+      transform: translateY(-50%);
+      transition: 0.5s;
+      background-color: $color-background;
+    }
+
+    input {
+      width: 100%;
+      height: 54px;
+      border: 1px solid $color-gray2;
+      border-radius: 4px;
+      padding: 14px 16px;
+      color: $color-gray;
+      background-color: $color-background;
+
+      &::placeholder {
+        opacity: 0;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &:not(:placeholder-shown) + label, &:focus + label {
+        top: 0;
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+  &__radio-title{
+    margin-bottom: 11px;
+  }
+  &__radio-list{
+    margin-bottom: 47px;
+    position: relative;
+    height: 125px;
+  }
+  &__radio-item{
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    input{
+      margin-right: 12px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__upload-button{
+      margin-bottom: 50px;
+  }
+  &__button{
+    margin: 0 auto;
+  }
+}
+.upload-button{
+  box-sizing: border-box;
+  &__origin{
+    opacity: 0;
+    height: 0.1px;
+    width: 0.1px;
+  }
+  &__container {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    border: 1px solid $color-gray2;
+    border-radius: 4px;
+  }
+
+  &__button{
+    height: 100%;
+    width: 83px;
+    border: 1px solid rgba(0, 0, 0, 0.87);
+    border-radius: 4px 0 0 4px;
+    padding: 14px 15px;
+    cursor: pointer;
+  }
+  &__label{
+    padding: 14px 16px 14px;
+    color: $color-gray2;
+    width: calc(100% - 83px);
+    p{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  &__error &__container{
+    border: 2px solid $color-red
+  }
+  &__error &__button{
+    border: none;
+    border-right: 2px solid $color-red;
+  }
+  &__error-text{
+    color: $color-red;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 4px;
+    margin-left: 16px;
+  }
+}
