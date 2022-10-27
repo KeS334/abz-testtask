@@ -34,9 +34,10 @@ const FormBlock = () => {
 
     return (
         <form className="form-block" onSubmit={submitHandler}>
-            <div className="form-block__container">
 
-                <h1 className="form-block__title">Working with POST request</h1>
+            <h1 className="form-block__title">Working with POST request</h1>
+
+            <div className="form-block__container">
 
                 <TextInput type="text" name="name" label="Your name" value={user.name} changeHandler={changeHandler}/>
                 <TextInput type="email" name="email" label="Email" value={user.email} changeHandler={changeHandler}/>

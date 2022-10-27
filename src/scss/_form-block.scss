@@ -1,6 +1,6 @@
 .form-block{
   &__title{
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
     text-align: center;
   }
   &__container{
@@ -20,7 +20,7 @@
     label {
       position: absolute;
       top: 50%;
-      left: 14px;
+      left: 16px;
       color: $color-gray;
       transform: translateY(-50%);
       transition: 0.5s;
@@ -35,15 +35,12 @@
       padding: 14px 16px;
       color: $color-gray;
       background-color: $color-background;
-
       &::placeholder {
         opacity: 0;
       }
-
       &:focus-visible {
         outline: none;
       }
-
       &:not(:placeholder-shown) + label, &:focus + label {
         top: 0;
         font-size: 12px;
@@ -78,10 +75,12 @@
 }
 .upload-button{
   box-sizing: border-box;
+  position: relative;
   &__origin{
     opacity: 0;
     height: 0.1px;
     width: 0.1px;
+    position: absolute;
   }
   &__container {
     width: 100%;
@@ -92,17 +91,18 @@
   }
 
   &__button{
-    height: 100%;
+    height: calc(100% + 2px);
     width: 83px;
     border: 1px solid rgba(0, 0, 0, 0.87);
     border-radius: 4px 0 0 4px;
     padding: 14px 15px;
     cursor: pointer;
+    margin: -1px 0 -1px -1px;
   }
   &__label{
     padding: 14px 16px 14px;
-    color: $color-gray2;
-    width: calc(100% - 83px);
+    color: $color-gray;
+    width: calc(100% - 82px);
     p{
       text-overflow: ellipsis;
       overflow: hidden;

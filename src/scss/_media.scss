@@ -10,6 +10,12 @@
   .container {
     max-width: calc(100% - 64px)
   }
+  .poster{
+    height: 500px;
+    &__title{
+      margin-top: 89px;
+    }
+  }
   .cards-block{
     &__container{
       height: 794px;
@@ -25,6 +31,9 @@
     max-width: calc(100% - 32px)
   }
   .poster{
+    &__title{
+      margin-top: 40px;
+    }
     &__title, &__text {
       max-width: 328px;
     }
@@ -39,7 +48,7 @@
     }
   }
   .form-block{
-    &__container {
+    &__container, &__title {
       max-width: 328px;
     }
   }
