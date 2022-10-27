@@ -10,7 +10,6 @@ export interface IUserResponse{
     }
     users: IUserGet[]
 }
-
 interface IUser {
     name: string,
     email: string,
@@ -31,4 +30,8 @@ export interface IUserGet extends IUser {
 export interface IPosition {
     id: number,
     name:string
+}
+export interface ILinks {
+    default: string,
+    next: string
 }

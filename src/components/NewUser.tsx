@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import FormBlock from "./FormBlock";
 import Feedback from "./Feedback";
-import useUsers from "../services/Users";
+import {UserContext} from "../UserContext";
 
 const NewUser = () => {
 
-    const {showForm} = useUsers();
+    const {showForm} = useContext(UserContext);
 
     return (
         <section className="app__new-user">

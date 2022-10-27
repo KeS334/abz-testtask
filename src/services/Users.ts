@@ -1,37 +1,31 @@
-import {useEffect, useState} from 'react';
-import {IUserResponse, IUserSend} from "../models";
+import {useContext, useEffect, useState} from 'react';
+import {ILinks, IUserSend} from "../models";
+import {UserContext} from "../UserContext";
 
 const useUsers = () => {
 
     const [token, setToken] = useState('')
-
-    const [newUsersAvailable, setNewUsersAvailable] = useState(true)
-    const [showForm, setShowForm] = useState(true)
-    const [isUsersLoaded, setIsUsersLoaded] = useState(false)
-
-    const [usersInfo, setUsersInfo] = useState<IUserResponse>();
-    const [usersLink, setUsersLink] = useState<string>('https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6')
-
+    const {hideForm, loadingStatus, putUsersData} = useContext(UserContext);
+    const [usersLinks, setUsersLinks] = useState<ILinks>({
+        default: 'https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6',
+        next: ''
+    })
 
     function getToken(){
         fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-            .then(responce => responce.json())
+            .then(response => response.json())
             .then(data => setToken(data.token))
     }
 
-    function getUsers() {
-        setIsUsersLoaded(false)
+    function getUsers(next:boolean) {
+        loadingStatus(true)
         try {
-            fetch(usersLink)
+            fetch(next?usersLinks.next:usersLinks.default)
                 .then(response => response.json())
                 .then((data =>{
-                    setUsersInfo(data)
-                    setIsUsersLoaded(true)
-                    if(data.page !== data.total_pages){
-                        setUsersLink(data.links.next_url);
-                    } else{
-                        setNewUsersAvailable(false)
-                    }
+                    putUsersData(data)
+                    loadingStatus(false)
+                    setUsersLinks({...usersLinks, next: data.links.next_url});
                 }))
         } catch (error) {
             console.log("Users error: ", error)
@@ -49,11 +43,11 @@ const useUsers = () => {
                 headers: { 'Token': token},
                 body: formData
             })
-                .then(responce => responce.json())
+                .then(response => response.json())
                 .then(data => {
                     console.log(data)
-                    setShowForm(false)
-                    getUsers()
+                    hideForm()
+                    getUsers(false)
                 })
         } catch (error) {
             console.log("Users error: ", error)
@@ -62,10 +56,10 @@ const useUsers = () => {
 
     useEffect(() =>{
         getToken()
-        getUsers()
+        getUsers(false)
     }, [])
 
-    return {usersInfo, newUsersAvailable, showForm, getUsers, sendUser, isUsersLoaded, }
+    return {getUsers, sendUser}
 };
 
 export default useUsers;
